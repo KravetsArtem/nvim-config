@@ -6,11 +6,12 @@ return {
 		opts = {
 			transparent_background = true,
 			integrations = {
+				cmp = true,
 				telescope = true,
 				harpoon = true,
 				mason = true,
 				neotest = true,
-			}
+			},
 		},
 		config = function(_, opts)
 			require('catppuccin').setup(opts)
