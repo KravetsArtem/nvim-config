@@ -1,21 +1,13 @@
 return {
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-		opts = {
-			transparent_background = true,
-			integrations = {
-				cmp = true,
-				telescope = true,
-				harpoon = true,
-				mason = true,
-				neotest = true,
-			},
-		},
-		config = function(_, opts)
-			require('catppuccin').setup(opts)
-			vim.cmd.colorscheme 'catppuccin-mocha'
-		end
-	},
-};
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+	config = function()
+		require('tokyonight').setup({
+			style = 'night',
+			transparent = true,
+		})
+		vim.cmd.colorscheme 'tokyonight'
+	end
+}
