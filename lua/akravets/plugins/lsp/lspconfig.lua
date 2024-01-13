@@ -8,6 +8,7 @@ return {
   config = function()
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
+		local util = require("lspconfig/util")
 
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -110,6 +111,40 @@ return {
         })
       end,
     })
+
+		-- configure rust server
+		lspconfig["jdtls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		-- configure rust server
+		lspconfig["clangd"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		-- configure rust server
+		lspconfig["rust_analyzer"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		-- configure golang server
+		lspconfig["gopls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			cmd = {"gopls"},
+			filetypes = {"go", "gomod", "gowork", "gotmpl"},
+			root_dir = util.root_pattern("go.work", "go.mod", ".git")
+		})
+
+		-- configure ruby server
+		lspconfig["ruby_ls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			filetypes = {"ruby"},
+		})
 
     -- configure prisma orm server
     lspconfig["prismals"].setup({

@@ -4,6 +4,12 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
+	-- opts = function(_, opts)
+	-- 	vim.list_extend(
+	-- 		opts.ensure_installed,
+	-- 		{ "delve", "gotests", "golangci-lint", "gofumpt", "goimports", "golangci-lint-langserver", "impl", "gomodifytags", "iferr", "gotestsum" }
+	-- 	)
+	-- end,
   config = function()
     -- import mason
     local mason = require("mason")
@@ -35,6 +41,14 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+				-- golang
+				"gopls", "golangci_lint_ls",
+				-- ruby
+				"ruby_ls",
+				--Rust
+				"rust_analyzer",
+				--Java
+				"jdtls",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -48,6 +62,11 @@ return {
         "black", -- python formatter
         "pylint", -- python linter
         "eslint_d", -- js linter
+				"codelldb", -- rust debugger
+				-- golang tools
+				"gotests", "golangci-lint", "gotestsum", "iferr", "gomodifytags", "impl","goimports","delve", "gofumpt",
+				-- java tools
+				"google-java-format",
       },
     })
   end,
